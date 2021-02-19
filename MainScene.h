@@ -8,7 +8,7 @@ class MainScene : public Scene {
 		void onMovedObj(PaintObject *p) override;
 		void onClickedLObj(PaintObject *p) override;
 	private:
-		RogButton *but;
+		PaintObject *tt;
 		void paint();
 		void update();
 		coord circ;

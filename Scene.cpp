@@ -3,11 +3,17 @@
 
 Scene::Scene(coord &wSize) {
 	this->wSize=wSize;
+	MAXLayer=0;
+	
+	selectedObj=0;
 }
 
 Scene::~Scene() {
-	std::set<PaintObject*>::iterator it=pObjects.begin();
-	for(;it!=pObjects.end();++it) delete *it;
+	std::map<int, std::set<PaintObject*> >::iterator it2=pObjects.begin();
+	for(;it2!=pObjects.end();++it2) {
+		std::set<PaintObject*>::iterator it=(it2->second).begin();
+		for(;it!=(it2->second).end();++it) delete *it;
+	}
 	std::cout << "deleted scene\n";
 }
 
@@ -68,25 +74,36 @@ void Scene::closeScene() {
 }
 
 void Scene::add(PaintObject* p) {
-	if(pObjects.find(p)==pObjects.end()) 
+	add(p,0);
+}
+
+void Scene::add(PaintObject* p,int layer) {
+	if(pObjects[layer].find(p)==pObjects[layer].end()) 
 	{
-		pObjects.insert(p);
+		pObjects[layer].insert(p);
 		p->setScene(this);
 	}
 }
 
 void Scene::updateObjects() {
-	std::set<PaintObject*>::iterator it=pObjects.begin();
-	for(;it!=pObjects.end();++it) (*it)->updatePb(cTab);
+	bool flagLayer=false;
+	std::map<int, std::set<PaintObject*> >::reverse_iterator it2=pObjects.rbegin();
+	for(;it2!=pObjects.rend();++it2) {
+		std::set<PaintObject*>::iterator it=(it2->second).begin();
+		for(;it!=(it2->second).end();++it) flagLayer=(*it)->updatePb(cTab,flagLayer);
+	}
 }
 
 void Scene::paintObjects() {
-	std::set<PaintObject*>::iterator it=pObjects.begin();
-	for(;it!=pObjects.end();++it) (*it)->paint();
+	std::map<int, std::set<PaintObject*> >::iterator it2=pObjects.begin();
+	for(;it2!=pObjects.end();++it2) {
+		std::set<PaintObject*>::iterator it=(it2->second).begin();
+		for(;it!=(it2->second).end();++it) if((*it)->getVisible()) (*it)->paint();
+	}
 }
 
 void Scene::selectObj(PaintObject *p) {
-	std::set<PaintObject*>::iterator it=pObjects.begin();
-	for(;it!=pObjects.end();++it) (*it)->setSelected(false);
+	if(selectedObj!=0) selectedObj->setSelected(false);
 	p->setSelected(true);
+	selectedObj=p;
 }

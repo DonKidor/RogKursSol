@@ -4,6 +4,7 @@
 #include "rog.h"
 #include "PaintObject.h"
 #include "postcodes.h"
+#include <map>
 
 
 class Scene {
@@ -12,6 +13,7 @@ class Scene {
 		PostCode doNext(Scene *&scene);
 		Scene(coord &wSize);
 		void add(PaintObject *p);
+		void add(PaintObject *p, int layer);
 		~Scene();
 		void virtual onMovedObj(PaintObject *p) {};
 		void virtual onClickedLObj(PaintObject *p) {};
@@ -19,13 +21,17 @@ class Scene {
 		void selectObj(PaintObject *p);
 		
 	private:
-		std::set<PaintObject*> pObjects;
+		std::map<int,std::set<PaintObject*> > pObjects;
 		virtual void paint() = 0;
 		virtual void update() = 0;
 		void control();
 		void prepaint();
 		void updateObjects();
 		void paintObjects();
+		int MAXLayer;
+		PaintObject *selectedObj;
+		Scene *tScene;
+		PostCode postcode;
 		
 		
 	protected:
@@ -34,8 +40,8 @@ class Scene {
 		int backColor;
 		allContr cTab;
 		coord wSize;
-		PostCode postcode;
-		Scene *tScene;
+		
+		
 		
 };
 

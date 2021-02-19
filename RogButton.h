@@ -2,17 +2,12 @@
 
 #include "rog.h"
 
-class RogButton : public PaintBox {
-	
+
+class RogButton : public RogLabel {
+	using RogLabel::RogLabel;
 	public:
-		RogButton(std::string text);
-		std::string text;
 		int hgColor;
-		int textColor;
 		void paint() override;
-		void setText(std::string text) {
-			this->text=text;
-		};
 	private:
 		void mousemove() override;
 		bool hgLight;

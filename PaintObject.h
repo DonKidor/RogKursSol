@@ -15,9 +15,12 @@ class PaintObject {
 		PaintObject();
 		PaintObject(Scene* s);
 		void setScene(Scene *s);
-		void updatePb(allContr cTab);
+		bool updatePb(allContr cTab,bool canLayer);
 		void virtual paint() = 0;
 		void setSelected(bool f) { isSelected=f;};
+		void setVisible(bool v);
+		bool getVisible();
+		
 	private:
 		Scene *atScene;
 		bool virtual checkBound(coord c)=0;
@@ -26,6 +29,7 @@ class PaintObject {
 		void virtual clickedLBM(){};
 		void virtual clickedRBM(){};
 		void virtual mousemove(){};
+		bool visible;
 	protected:
 		bool isSelected;
 		

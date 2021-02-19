@@ -7,7 +7,9 @@ class RogTextBox : public PaintBox {
 		std::string text;
 		void paint() override;
 		void updated(allContr cTab) override;
+		int maxCharSize;
 	public:
 		RogTextBox();
+		void setCharSize(int charSize);
 		int textColor;
 };

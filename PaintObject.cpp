@@ -4,6 +4,7 @@
 
 PaintObject::PaintObject() {
 	settedScene=false;
+	visible=true;
 }
 
 PaintObject::PaintObject(Scene *s) {
@@ -15,24 +16,40 @@ PaintObject::~PaintObject() {
 	std::cout <<"deleted PaintObject\n";
 }
 
-void PaintObject::updatePb(allContr cTab) {
+bool PaintObject::updatePb(allContr cTab,bool canLayer) {
 	updated(cTab);
-	if(checkBound(cTab.RBtn)) {
-		clickedRBM();
-		atScene->onClickedRObj(this);
+	bool flagLayer=false;
+	if(visible&&!canLayer) {
+		if(checkBound(cTab.RBtn)) {
+			clickedRBM();
+			atScene->onClickedRObj(this);
+			flagLayer=true;
+		}
+		if(checkBound(cTab.LBtn)) {
+			clickedLBM();
+			atScene->selectObj(this);
+			atScene->onClickedLObj(this);
+			flagLayer=true;
+		}
+		if(checkBound(cTab.MPos)) {
+			mousemove();
+			atScene->onMovedObj(this);
+			flagLayer=true;
+		}
 	}
-	if(checkBound(cTab.LBtn)) {
-		clickedLBM();
-		atScene->selectObj(this);
-		atScene->onClickedLObj(this);
-	}
-	if(checkBound(cTab.MPos)) {
-		mousemove();
-		atScene->onMovedObj(this);
-	}
+	return flagLayer||canLayer;
 }
 
 void PaintObject::setScene(Scene *s) {
 	settedScene=true;
 	atScene=s;
+}
+
+void PaintObject::setVisible(bool v) {
+	visible=v;
+	if(!v) isSelected=false;
+}
+
+bool PaintObject::getVisible() {
+	return visible;
 }

@@ -20,25 +20,38 @@ void MainScene::paint() {
 
 void MainScene::initScene() {
 	backColor=BLACK;
-	RogTextBox *b,*b2;
-	b=new RogTextBox();
-	b->baseColor=BLUE;
-	b->pos=coord{50,50};
-	b->size=coord{100,40};
-	b->tag=5;
-	add(b);
-	
-	b2=new RogTextBox();
+	RogButton *b[20][20];
+	for(int i=0;i<20;++i)
+		for(int j=0;j<20;++j) {
+			b[i][j]=new RogButton("but");
+			b[i][j]->baseColor=BLUE;
+			b[i][j]->hgColor=GREEN;
+			b[i][j]->pos=coord{i*30,j*30};
+			b[i][j]->size=coord{29,29};
+			b[i][j]->tag=(20*i)+j;
+			add(b[i][j]);
+		}
+	RogButton *b2;
+	b2=new RogButton("Big Button");
 	b2->baseColor=BLUE;
-	b2->pos=coord{50,100};
-	b2->size=coord{100,50};
-	b2->tag=6;
-	add(b2);
+	b2->hgColor=GREEN;
+	b2->pos=coord{45,45};
+	b2->size=coord{60,60};
+	b2->tag=-5;
+	tt=b2;
+	add(b2,1);
+	
+	RogTextBox *g=new RogTextBox();
+	g->baseColor=BLUE;
+	g->pos=coord{520,100};
+	g->size=coord{150,50};
+	add(g,2);
+	
 }
 
 void MainScene::onMovedObj(PaintObject *p) {
 	
 }
 void MainScene::onClickedLObj(PaintObject *p) {
-	
+	if(p->tag>0) tt->setVisible(!tt->getVisible());
 }
