@@ -7,23 +7,27 @@
 #define WIDTH 700
 #define HEIGHT 700
 
+
+
+
 void startInit() {
-	initwindow(WIDTH,HEIGHT,"");
+	
 	srand(time(0));
-	setvisualpage(1);
-	setactivepage(0);
 }
 
-void sceneCycle() {
-	coord size={getmaxx()+1,getmaxy()+1};
+
+
+void sceneCycle(sf::RenderWindow& window) {
 	Scene *m;
-	m=new MainScene(size);
+	
+	m=new MainScene(window);
 	m->initScene();
 	int code;
 	Scene *t;
 	std::queue<Scene*> q;
 	do {
 		code=m->doNext(t);
+		
 		if(code==LOAD) {
 			q.push(m);
 			m=t;
@@ -33,13 +37,21 @@ void sceneCycle() {
 				m=q.front();
 				q.pop();
 			} else break;
+		} else if(code==CLOSE) {
+			window.close();
+			delete m;
+			while(q.size()>0) {
+				delete q.front();
+				q.pop();
+			}
 		}
-	}while(code<ERR);
+	}while(window.isOpen() && code<ERR);
 }
 
 int main() {
+	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "My window",sf::Style::Titlebar | sf::Style::Close);
 	startInit();
-	sceneCycle();
+	sceneCycle(window);
 	std::cout << "PROGRAM END\n";
 	return 0;
 }

@@ -1,10 +1,8 @@
 #include "rog.h"
 #include <iostream>
 
-Scene::Scene(coord &wSize) {
-	this->wSize=wSize;
+Scene::Scene(sf::RenderWindow &window) : window(window) {
 	MAXLayer=0;
-	
 	selectedObj=0;
 }
 
@@ -21,36 +19,39 @@ void Scene::control() {
 	cTab.resetKeys();
 	int code;
 	int x,y;
-	while(kbhit()){
-		code=getch();
-		std::cout << code<<std::endl;
-		cTab.keys.push_back(code);
+	sf::Event ev;
+	cTab.LBtn={-1,-1};
+	cTab.RBtn={-1,-1};
+	while(window.pollEvent(ev)){
+		if (ev.type == sf::Event::Closed) {
+        	postcode=CLOSE;
+        }
+		if(ev.type==sf::Event::KeyPressed)
+			cTab.keys.push_back(1);
+			
+		if(ev.type==sf::Event::TextEntered)
+			cTab.chars.push_back(ev.text.unicode);
+	
+		if(ev.type==sf::Event::MouseMoved) {
+			coord c{ev.mouseMove.x,ev.mouseMove.y};
+			cTab.MPos=c;
+		}
+		if(ev.type==sf::Event::MouseButtonPressed && ev.mouseButton.button==sf::Mouse::Left) {
+			coord c{ev.mouseButton.x,ev.mouseButton.y};
+			cTab.LBtn=c;
+		}
+		if((ev.type==sf::Event::MouseButtonPressed) && (ev.mouseButton.button==sf::Mouse::Right)) {
+			coord c{ev.mouseButton.x,ev.mouseButton.y};
+			cTab.RBtn=c;
+		}
 	}
-	if(ismouseclick(WM_MOUSEMOVE)) {
-		getmouseclick(WM_MOUSEMOVE,x,y);
-		coord c{x,y};
-		cTab.MPos=c;
-	}
-	if(ismouseclick(WM_LBUTTONDOWN)) {
-		getmouseclick(WM_LBUTTONDOWN,x,y);
-		coord c{x,y};
-		cTab.LBtn=c;
-	}  else cTab.LBtn={-1,-1};
-	if(ismouseclick(WM_RBUTTONDOWN)) {
-		getmouseclick(WM_RBUTTONDOWN,x,y);
-		coord c{x,y};
-		cTab.RBtn=c;
-	} else cTab.RBtn={-1,-1};
 }
 
 void Scene::prepaint() {
-	int t=getactivepage();
-	setactivepage(1-t);
-	setvisualpage(t);
-	setfillstyle(1,backColor);
-	bar(0,0,wSize.x,wSize.y);
+	window.clear();
 	paint();
 	paintObjects();
+	window.display();
 }
 
 PostCode Scene::doNext(Scene *&scene) {
@@ -59,7 +60,6 @@ PostCode Scene::doNext(Scene *&scene) {
 	updateObjects();
 	update();
 	prepaint();
-	delay(1000/60);
 	scene=tScene;
 	return postcode;
 }
@@ -98,7 +98,7 @@ void Scene::paintObjects() {
 	std::map<int, std::set<PaintObject*> >::iterator it2=pObjects.begin();
 	for(;it2!=pObjects.end();++it2) {
 		std::set<PaintObject*>::iterator it=(it2->second).begin();
-		for(;it!=(it2->second).end();++it) if((*it)->getVisible()) (*it)->paint();
+		for(;it!=(it2->second).end();++it) if((*it)->getVisible()) (*it)->paint(window);
 	}
 }
 

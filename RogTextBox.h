@@ -5,12 +5,15 @@ class RogTextBox : public PaintBox {
 	private:
 		int counter;
 		std::string text;
-		void paint() override;
+		void paint(sf::RenderWindow &w) override;
 		void updated(allContr cTab) override;
 		int maxCharSize;
+		sf::Text textShape;
+		sf::Font font;
 	public:
-		RogTextBox();
+		int charSize;
+		RogTextBox(sf::Font font);
 		void setCharSize(int charSize);
-		int textColor;
+		sf::Color textColor;
 		void setDefault() override;
 };

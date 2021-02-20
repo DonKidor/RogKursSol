@@ -14,8 +14,8 @@ void PaintGroup::setScene(Scene *s) {
 	for(int i=0;i<groupObj.size();++i) groupObj[i]->setScene(s);
 }
 
-void PaintGroup::paint() {
-	for(int i=0;i<groupObj.size();++i) groupObj[i]->paint();
+void PaintGroup::paint(sf::RenderWindow &w) {
+	for(int i=0;i<groupObj.size();++i) groupObj[i]->paint(w);
 }
 
 void PaintGroup::setVisible(bool v) {

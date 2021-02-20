@@ -6,8 +6,8 @@
 class RogButton : public RogLabel {
 	using RogLabel::RogLabel;
 	public:
-		int hgColor;
-		void paint() override;
+		sf::Color hgColor;
+		void paint(sf::RenderWindow &w) override;
 		void setDefault() override;
 	private:
 		void mousemove() override;

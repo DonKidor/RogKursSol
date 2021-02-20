@@ -7,10 +7,6 @@ PaintObject::PaintObject() {
 	visible=true;
 }
 
-PaintObject::PaintObject(Scene *s) {
-	atScene=s;
-	settedScene=true;
-}
 
 PaintObject::~PaintObject() {
 	std::cout <<"deleted PaintObject\n";
@@ -19,6 +15,7 @@ PaintObject::~PaintObject() {
 bool PaintObject::updatePb(allContr cTab,bool canLayer) {
 	updated(cTab);
 	bool flagLayer=false;
+	
 	if(visible&&!canLayer) {
 		if(checkBound(cTab.RBtn)) {
 			clickedRBM();

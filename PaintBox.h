@@ -3,11 +3,12 @@
 #include "rog.h"
 
 class PaintBox : public PaintObject{
-	using PaintObject::PaintObject;
 	public:
-		int baseColor;
-		void paint() override;
+		PaintBox();
+		sf::Color baseColor;
+		void paint(sf::RenderWindow &w) override;
 		void setDefault() override;
 	private:
 		bool checkBound(coord c) override;
+		sf::RectangleShape rect;
 };

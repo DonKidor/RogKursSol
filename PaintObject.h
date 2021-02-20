@@ -12,12 +12,11 @@ class PaintObject {
 		coord size;
 		~PaintObject();
 		PaintObject();
-		PaintObject(Scene* s);
 		void virtual setPos(coord npos);
 		coord getPos();
 		void virtual setScene(Scene *s);
 		bool virtual updatePb(allContr cTab,bool canLayer);
-		void virtual paint() = 0;
+		void virtual paint(sf::RenderWindow &w) = 0;
 		void setSelected(bool f) { isSelected=f;};
 		void virtual setVisible(bool v);
 		bool getVisible();

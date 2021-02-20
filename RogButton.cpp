@@ -2,11 +2,11 @@
 #include "RogButton.h"
 
 
-void RogButton::paint() {
-	int t=baseColor;
+void RogButton::paint(sf::RenderWindow &w) {
+	sf::Color t=baseColor;
 	if(hgLight)
 		baseColor=hgColor;
-	RogLabel::paint();
+	RogLabel::paint(w);
 	baseColor=t;
 }
 
@@ -20,5 +20,5 @@ void RogButton::updated(allContr cTab) {
 
 void RogButton::setDefault() {
 	RogLabel::setDefault();
-	hgColor=GREEN;
+	hgColor=sf::Color::Green;
 }

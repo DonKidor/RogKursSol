@@ -1,19 +1,28 @@
 #include "rog.h"
 #include "RogLabel.h"
 
-RogLabel::RogLabel(std::string text) {
+RogLabel::RogLabel(std::string text, sf::Font font) {
 	PaintBox();
+	this->font=font;
 	this->text=text;
+	textShape = sf::Text();
 }
 
-void RogLabel::paint() {
-	PaintBox::paint();
-	setbkcolor(baseColor);
-	setcolor(textColor);
-	settextstyle(0,0,1);
-	outtextxy(pos.x+size.x/2-textwidth((char*)text.c_str())/2,pos.y+size.y/2-textheight((char*)text.c_str())/2,(char*)text.c_str());
+void RogLabel::paint(sf::RenderWindow &w) {
+	PaintBox::paint(w);
+	
+	textShape.setString(text);
+	textShape.setColor(textColor);
+	textShape.setFillColor(textColor);
+	textShape.setFont(font);
+	textShape.setScale(1,1);
+	textShape.setCharacterSize(charSize);
+	textShape.setPosition(pos.x+(size.x/2)-(textShape.getLocalBounds().width/2),pos.y+(size.y/2)-(charSize/2));
+	w.draw(textShape);
+	//outtextxy(pos.x+size.x/2-textwidth((char*)text.c_str())/2,pos.y+size.y/2-textheight((char*)text.c_str())/2,(char*)text.c_str());
 }
 void RogLabel::setDefault() {
+	charSize=26;
 	PaintBox::setDefault();
-	textColor=BLACK;
+	textColor=sf::Color::Black;
 }

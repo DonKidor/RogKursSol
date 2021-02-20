@@ -11,7 +11,7 @@ class Scene {
 	public:
 		virtual void initScene() {};
 		PostCode doNext(Scene *&scene);
-		Scene(coord &wSize);
+		Scene(sf::RenderWindow &window);
 		void add(PaintObject *p);
 		void add(PaintObject *p, int layer);
 		~Scene();
@@ -39,7 +39,7 @@ class Scene {
 		void closeScene();
 		int backColor;
 		allContr cTab;
-		coord wSize;
+		sf::RenderWindow &window;
 		
 		
 		

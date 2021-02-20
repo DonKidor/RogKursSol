@@ -5,11 +5,6 @@
 
 void MainScene::update() {
 	if(cTab.isContain(27)) closeScene();
-	if(cTab.isContain(103)) {
-		Scene *s=new SmileScene(wSize);
-		s->initScene();
-		loadScene(s);
-	}
 }
 
 void MainScene::paint() {
@@ -19,21 +14,31 @@ void MainScene::paint() {
 }
 
 void MainScene::initScene() {
-	backColor=BLACK;
+	sf::Font font;
+	if(!font.loadFromFile("arial.ttf"))
+		std::cout << "Error on loading font\n";
+	
 	PaintGroup *gg=new PaintGroup();
 	gg->setPos(coord{100,100});
 	RogButton *b[10][10];
 	for(int i=0;i<10;++i)
 		for(int j=0;j<10;++j) {
-			b[i][j]=new RogButton("but");
+			b[i][j]=new RogButton("but",font);
 			b[i][j]->setDefault();
-			b[i][j]->setPos(coord{i*30,j*30});
-			b[i][j]->size=coord{29,29};
-			b[i][j]->tag=(20*i)+j;
+			b[i][j]->setPos(coord{i*40,j*40});
+			b[i][j]->size=coord{39,39};
+			b[i][j]->tag=(10*i)+j;
 			gg->add(b[i][j]);
 		}
 	tt=gg;
 	add(gg);
+	RogTextBox *f=new RogTextBox(font);
+	f->setDefault();
+	f->setPos(coord{100,100});
+	f->size=coord{100,50};
+	f->tag=-5;
+	add(f,1);
+	
 	
 }
 
@@ -41,5 +46,6 @@ void MainScene::onMovedObj(PaintObject *p) {
 	
 }
 void MainScene::onClickedLObj(PaintObject *p) {
-	if(p->tag>=0) tt->setPos(tt->getPos()+coord{20,20});
+	
+	if(p->tag>=0) std::cout << "clicked"<<p->tag<<"\n";
 }

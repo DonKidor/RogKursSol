@@ -1,18 +1,26 @@
 #include "rog.h"
 #include "PaintBox.h"
 
-bool PaintBox::checkBound(coord c) {
-	if(c.x<0 || c.y<0) return false;
-	return c.x>=pos.x && c.y>=pos.y && c.x<=pos.x+size.x&&c.y<=pos.y+size.y;
+#include <iostream>
+
+PaintBox::PaintBox() : PaintObject() {
+
+	rect= sf::RectangleShape();
 }
 
-void PaintBox::paint() {
-	setcolor(baseColor);
-	setfillstyle(1,baseColor);
-	bar(pos.x,pos.y,pos.x+size.x,pos.y+size.y);
+bool PaintBox::checkBound(coord c) {
+	if(c.x<0 || c.y<0) return false;
+	return c.y>=pos.y && c.x>=pos.x && c.x<=pos.x+size.x&&c.y<=pos.y+size.y;
+}
+
+void PaintBox::paint(sf::RenderWindow &w) {
+	rect.setSize(sf::Vector2f(size.x,size.y));
+	rect.setPosition(pos.x,pos.y);
+	rect.setFillColor(baseColor);
+	w.draw(rect);
 }
 
 void PaintBox::setDefault() {
 	PaintObject::setDefault();
-	baseColor=BLUE;
+	baseColor=sf::Color::Blue;
 }

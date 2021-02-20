@@ -8,7 +8,7 @@ class PaintGroup : public PaintObject {
 	public:
 		void add(PaintObject* p);
 		bool updatePb(allContr cTab,bool canLayer) override;
-		void paint() override;
+		void paint(sf::RenderWindow &w) override;
 		void setVisible(bool v) override;
 		void setScene(Scene *s) override;
 		void setPos(coord npos) override;
