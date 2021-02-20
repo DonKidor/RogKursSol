@@ -48,7 +48,7 @@ void RogTextBox::paint(sf::RenderWindow &w) {
 	//outtextxy(pos.x,pos.y+size.y/2-textheight("A")/2,(char*)otext.c_str());
 	if(underMax)  {
 		
-		textShape.setPosition(textShape.findCharacterPos(maxCharSize-1).x,pos.y+(size.y/2)-(charSize/2));
+		textShape.setPosition(textShape.findCharacterPos(maxCharSize-1).x,pos.y+(size.y/2)-(30));
 		textShape.setString("_");
 		w.draw(textShape);
 		//outtextxy(pos.x+textwidth(" ")*(maxCharSize-1),pos.y+size.y/2-textheight((char*)text.c_str())/2,"_");
