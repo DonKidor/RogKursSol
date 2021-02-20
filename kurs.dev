@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
 CompilerSettings=0000000100000000000000000
-UnitCount=19
+UnitCount=21
 
 [VersionInfo]
 Major=1
@@ -232,6 +232,26 @@ BuildCmd=
 
 [Unit19]
 FileName=RogLabel.cpp
+CompileCpp=1
+Folder=mFS
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit20]
+FileName=PaintGroup.h
+CompileCpp=1
+Folder=mFS
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit21]
+FileName=PaintGroup.cpp
 CompileCpp=1
 Folder=mFS
 Compile=1

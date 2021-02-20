@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "postcodes.h"
 #include "PaintObject.h"
+#include "PaintGroup.h"
 #include "PaintBox.h"
 #include "RogLabel.h"
 #include "RogButton.h"

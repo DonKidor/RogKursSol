@@ -15,7 +15,7 @@ void startInit() {
 }
 
 void sceneCycle() {
-	coord size={getmaxx(),getmaxy()};
+	coord size={getmaxx()+1,getmaxy()+1};
 	Scene *m;
 	m=new MainScene(size);
 	m->initScene();

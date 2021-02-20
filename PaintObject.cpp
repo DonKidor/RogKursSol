@@ -53,3 +53,11 @@ void PaintObject::setVisible(bool v) {
 bool PaintObject::getVisible() {
 	return visible;
 }
+
+void PaintObject::setPos(coord npos) {
+	pos=npos;
+}
+
+coord PaintObject::getPos() {
+	return pos;
+}
