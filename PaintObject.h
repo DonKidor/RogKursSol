@@ -21,6 +21,7 @@ class PaintObject {
 		void setSelected(bool f) { isSelected=f;};
 		void virtual setVisible(bool v);
 		bool getVisible();
+		void virtual setDefault();
 		
 	private:
 		Scene *atScene;

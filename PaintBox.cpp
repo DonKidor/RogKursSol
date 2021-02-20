@@ -11,3 +11,8 @@ void PaintBox::paint() {
 	setfillstyle(1,baseColor);
 	bar(pos.x,pos.y,pos.x+size.x,pos.y+size.y);
 }
+
+void PaintBox::setDefault() {
+	PaintObject::setDefault();
+	baseColor=BLUE;
+}

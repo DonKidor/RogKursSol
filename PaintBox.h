@@ -7,6 +7,7 @@ class PaintBox : public PaintObject{
 	public:
 		int baseColor;
 		void paint() override;
+		void setDefault() override;
 	private:
 		bool checkBound(coord c) override;
 };

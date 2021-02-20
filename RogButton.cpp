@@ -8,7 +8,6 @@ void RogButton::paint() {
 		baseColor=hgColor;
 	RogLabel::paint();
 	baseColor=t;
-	
 }
 
 void RogButton::mousemove() {
@@ -17,4 +16,9 @@ void RogButton::mousemove() {
 
 void RogButton::updated(allContr cTab) {
 	hgLight=false;
+}
+
+void RogButton::setDefault() {
+	RogLabel::setDefault();
+	hgColor=GREEN;
 }

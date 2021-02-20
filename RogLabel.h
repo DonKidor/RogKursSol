@@ -11,4 +11,5 @@ class RogLabel : public PaintBox {
 		void setText(std::string text) {
 			this->text=text;
 		};
+		void setDefault() override;
 };

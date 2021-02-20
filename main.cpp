@@ -8,7 +8,7 @@
 #define HEIGHT 700
 
 void startInit() {
-	initwindow(WIDTH,HEIGHT);
+	initwindow(WIDTH,HEIGHT,"");
 	srand(time(0));
 	setvisualpage(1);
 	setactivepage(0);

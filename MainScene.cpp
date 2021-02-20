@@ -26,8 +26,7 @@ void MainScene::initScene() {
 	for(int i=0;i<10;++i)
 		for(int j=0;j<10;++j) {
 			b[i][j]=new RogButton("but");
-			b[i][j]->baseColor=BLUE;
-			b[i][j]->hgColor=GREEN;
+			b[i][j]->setDefault();
 			b[i][j]->setPos(coord{i*30,j*30});
 			b[i][j]->size=coord{29,29};
 			b[i][j]->tag=(20*i)+j;

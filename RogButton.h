@@ -8,6 +8,7 @@ class RogButton : public RogLabel {
 	public:
 		int hgColor;
 		void paint() override;
+		void setDefault() override;
 	private:
 		void mousemove() override;
 		bool hgLight;

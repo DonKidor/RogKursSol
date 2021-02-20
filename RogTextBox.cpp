@@ -37,11 +37,15 @@ void RogTextBox::paint() {
 
 RogTextBox::RogTextBox() {
 	counter=0;
-	textColor=BLACK;
-	maxCharSize=20;
 	PaintBox();
 }
 
 void RogTextBox::setCharSize(int charSize) {
 	maxCharSize=charSize;
+}
+
+void RogTextBox::setDefault() {
+	PaintBox::setDefault();
+	textColor=BLACK;
+	maxCharSize=20;
 }

@@ -61,3 +61,8 @@ void PaintObject::setPos(coord npos) {
 coord PaintObject::getPos() {
 	return pos;
 }
+
+void PaintObject::setDefault() {
+	pos=coord{0,0};
+	size=coord{50,50};
+}

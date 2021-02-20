@@ -12,4 +12,5 @@ class RogTextBox : public PaintBox {
 		RogTextBox();
 		void setCharSize(int charSize);
 		int textColor;
+		void setDefault() override;
 };
