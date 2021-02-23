@@ -9,7 +9,6 @@ void MainScene::update() {
 
 void MainScene::paint() {
 	coord c=circ;
-	setcolor(1);
 	
 }
 

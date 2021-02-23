@@ -6,10 +6,8 @@ void SmileScene::update() {
 }
 
 void SmileScene::paint() {
-	setcolor(RED);
-	circle(250,250,60);
 }
 
 void SmileScene::initScene() {
-	backColor=BLACK;
+
 }
