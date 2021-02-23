@@ -4,8 +4,8 @@ Name=kurs
 Type=1
 Ver=2
 ObjFiles=
-Includes=E:\SFML-2.4.0\include
-Libs=E:\SFML-2.4.0\lib
+Includes=E:\SFML64\include
+Libs=E:\SFML64\lib
 PrivateResource=
 ResourceIncludes=
 MakeIncludes=
@@ -27,8 +27,8 @@ CommandLine=
 Folders=mFS
 IncludeVersionInfo=0
 SupportXPThemes=0
-CompilerSet=3
-CompilerSettings=0000000100000000000000000
+CompilerSet=0
+CompilerSettings=0000000000000000000000000
 UnitCount=23
 
 [VersionInfo]
