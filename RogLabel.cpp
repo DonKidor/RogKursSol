@@ -17,7 +17,9 @@ void RogLabel::paint(sf::RenderWindow &w) {
 	textShape.setFont(font);
 	textShape.setScale(1,1);
 	textShape.setCharacterSize(charSize);
-	textShape.setPosition(pos.x+(size.x/2)-(textShape.getLocalBounds().width/2),pos.y+(size.y/2)-(30));
+	textShape.setPosition(pos.x+(size.x/2),pos.y+(size.y/2));
+	textShape.setOrigin(textShape.getLocalBounds().left+textShape.getLocalBounds().width/2,textShape.getLocalBounds().top+textShape.getLocalBounds().height/2);
+	
 	w.draw(textShape);
 	//outtextxy(pos.x+size.x/2-textwidth((char*)text.c_str())/2,pos.y+size.y/2-textheight((char*)text.c_str())/2,(char*)text.c_str());
 }

@@ -25,14 +25,18 @@ void RogTextBox::paint(sf::RenderWindow &w) {
 	PaintBox::paint(w);
 	std::string otext=text;
 	
+	textShape.setString("ABC");
 	
 	textShape.setColor(textColor);
 	textShape.setFillColor(textColor);
 	textShape.setFont(font);
 	textShape.setScale(1,1);
 	textShape.setCharacterSize(charSize);
+	textShape.setPosition(pos.x,pos.y+size.y/2);
+	textShape.setOrigin(textShape.getLocalBounds().left,textShape.getLocalBounds().top+textShape.getLocalBounds().height/2);
 	
-	textShape.setPosition(pos.x,pos.y+(size.y/2)-(13));
+	
+	
 	bool underMax=false;
 	textShape.setString(otext+"_");
 	if(text.size()<maxCharSize && textShape.getLocalBounds().width>=size.x) maxCharSize=text.size();
@@ -48,7 +52,7 @@ void RogTextBox::paint(sf::RenderWindow &w) {
 	//outtextxy(pos.x,pos.y+size.y/2-textheight("A")/2,(char*)otext.c_str());
 	if(underMax)  {
 		
-		textShape.setPosition(textShape.findCharacterPos(maxCharSize-1).x,pos.y+(size.y/2)-(30));
+		textShape.setPosition(textShape.findCharacterPos(maxCharSize-1).x,pos.y+size.y/2);
 		textShape.setString("_");
 		w.draw(textShape);
 		//outtextxy(pos.x+textwidth(" ")*(maxCharSize-1),pos.y+size.y/2-textheight((char*)text.c_str())/2,"_");

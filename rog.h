@@ -11,6 +11,7 @@
 #include "RogLabel.h"
 #include "RogButton.h"
 #include "RogTextBox.h"
+#include "RogSprite.h"
 #include <algorithm>
 #include <string>
 #include <cstdlib>
