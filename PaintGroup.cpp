@@ -9,6 +9,10 @@ bool PaintGroup::updatePb(allContr cTab,bool canLayer) {
 	return flagLayer;
 }
 
+PaintGroup::~PaintGroup() {
+	for(int i=0;i<groupObj.size();++i) delete groupObj[i];
+}
+
 void PaintGroup::setScene(Scene *s) {
 	PaintObject::setScene(s);
 	for(int i=0;i<groupObj.size();++i) groupObj[i]->setScene(s);

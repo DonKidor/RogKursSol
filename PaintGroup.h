@@ -6,6 +6,7 @@
 class PaintGroup : public PaintObject {
 	using PaintObject::PaintObject;
 	public:
+		~PaintGroup();
 		void add(PaintObject* p);
 		bool updatePb(allContr cTab,bool canLayer) override;
 		void paint(sf::RenderWindow &w) override;

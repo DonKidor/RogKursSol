@@ -25,6 +25,12 @@ struct coord {
 		res.y=y/another;
 		return res;
 	}
+	coord operator*(coord another) {
+		coord res;
+		res.x=x*another.x;
+		res.y=y*another.y;
+		return res;
+	}
 	coord operator*(int another) {
 		coord res;
 		res.x=x*another;

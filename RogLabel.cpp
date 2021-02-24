@@ -9,6 +9,11 @@ RogLabel::RogLabel(std::string text, sf::Font font) {
 	textShape = sf::Text();
 }
 
+void RogLabel::setTextOutline(int thick, sf::Color color) {
+	textShape.setOutlineColor(color);
+	textShape.setOutlineThickness(thick);
+}
+
 void RogLabel::paint(sf::RenderWindow &w) {
 	if(backVisible)
 		PaintBox::paint(w);

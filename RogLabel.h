@@ -14,6 +14,7 @@ class RogLabel : public PaintBox {
 		void setDefault() override;
 		int charSize;
 		bool backVisible;
+		void setTextOutline(int thick, sf::Color color);
 	private:
 		sf::Text textShape;
 		sf::Font font;
