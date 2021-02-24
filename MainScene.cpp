@@ -22,17 +22,17 @@ void MainScene::initScene() {
 	for(int i=0;i<3;++i)
 		for(int j=0;j<4;++j) {
 			RogSprite *sprite=new RogSprite(tex);
-			sprite->size=coord{80,80};
 			sprite->setPos(coord{268+i*90,10+j*90});
-			sprite->texUV=coord{j*20+20,i*20};
+			sprite->setTexOffset(coord{j*20+20,i*20},coord{20,20});
+			sprite->setScale(coord{4,4});
 			add(sprite);
 		}
 	sf::Texture tex2;
 	tex2.loadFromFile("res/field_tiles.png");
 	RogSprite *sp=new RogSprite(tex2);
-	sp->texSize=coord{62,122};
-	sp->size=coord{62*4,122*4};
-	sp->setPos(coord{16,6});
+	sp->setTexOffset(coord{0,0},coord{62,122});
+	sp->setPos(coord{0,0});
+	sp->setScale(coord{4,4});
 	add(sp,-1);
 }
 

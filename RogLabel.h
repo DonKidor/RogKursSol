@@ -13,6 +13,7 @@ class RogLabel : public PaintBox {
 		};
 		void setDefault() override;
 		int charSize;
+		bool backVisible;
 	private:
 		sf::Text textShape;
 		sf::Font font;

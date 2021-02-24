@@ -9,7 +9,6 @@ class Scene;
 class PaintObject {
 	public:
 		int tag;
-		coord size;
 		~PaintObject();
 		PaintObject();
 		void virtual setPos(coord npos);
@@ -21,6 +20,8 @@ class PaintObject {
 		void virtual setVisible(bool v);
 		bool getVisible();
 		void virtual setDefault();
+		void virtual setSize(coord c) { size=c;};
+		coord virtual getSize() {return size;};
 		
 	private:
 		Scene *atScene;
@@ -33,6 +34,7 @@ class PaintObject {
 		bool visible;
 	protected:
 		coord pos;
+		coord size;
 		bool isSelected;
 		
 };

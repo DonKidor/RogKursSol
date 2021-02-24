@@ -6,7 +6,20 @@ RogSprite::RogSprite(sf::Texture tex) {
 	rect=sf::RectangleShape(sf::Vector2f(100,100));
 	texUV=coord{0,0};
 	texSize=coord{20,20};
+	scale=coord{1,1};
+	size=texSize;
 	this->tex=tex;
+}
+
+void RogSprite::setScale(coord c) {
+	scale=c;
+	size=coord{texSize.x*c.x,texSize.y*c.y};
+}
+
+void RogSprite::setTexOffset(coord pos, coord size) {
+	texUV=pos;
+	texSize=size;
+	setScale(scale);
 }
 
 void RogSprite::paint(sf::RenderWindow &w) {

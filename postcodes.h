@@ -25,6 +25,12 @@ struct coord {
 		res.y=y/another;
 		return res;
 	}
+	coord operator*(int another) {
+		coord res;
+		res.x=x*another;
+		res.y=y*another;
+		return res;
+	}
 };
 struct allContr {
 	coord LBtn;

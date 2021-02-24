@@ -5,12 +5,13 @@ RogLabel::RogLabel(std::string text, sf::Font font) {
 	PaintBox();
 	this->font=font;
 	this->text=text;
+	backVisible=true;
 	textShape = sf::Text();
 }
 
 void RogLabel::paint(sf::RenderWindow &w) {
-	PaintBox::paint(w);
-	
+	if(backVisible)
+		PaintBox::paint(w);
 	textShape.setString(text);
 	textShape.setColor(textColor);
 	textShape.setFillColor(textColor);
