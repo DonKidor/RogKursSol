@@ -4,6 +4,9 @@
 
 class TextureManager {
 	public:
-		static sf::Texture getInventory();
-		static sf::Texture getNumbers();
+		static sf::Texture& getInventory();
+		static sf::Texture& getNumbers();
+		static sf::Texture& getItems();
+		
+		
 };

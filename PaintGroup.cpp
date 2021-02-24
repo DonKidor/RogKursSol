@@ -1,5 +1,6 @@
 #include "PaintGroup.h"
 #include "rog.h"
+#include <iostream>
 
 bool PaintGroup::updatePb(allContr cTab,bool canLayer) {
 	updated(cTab);
@@ -19,7 +20,7 @@ void PaintGroup::setScene(Scene *s) {
 }
 
 void PaintGroup::paint(sf::RenderWindow &w) {
-	for(int i=0;i<groupObj.size();++i) groupObj[i]->paint(w);
+	for(int i=0;i<groupObj.size();++i) if(groupObj[i]->getVisible())groupObj[i]->paint(w);
 }
 
 void PaintGroup::setVisible(bool v) {
@@ -34,4 +35,5 @@ void PaintGroup::add(PaintObject* p) {
 void PaintGroup::setPos(coord npos) {
 	coord offset=npos-pos;
 	for(int i=0;i<groupObj.size();++i) groupObj[i]->setPos(groupObj[i]->getPos()+offset);
+	PaintObject::setPos(npos);
 }

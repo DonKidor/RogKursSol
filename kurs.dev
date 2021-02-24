@@ -28,8 +28,8 @@ Folders=mFS
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
-CompilerSettings=0000000100000000000000000
-UnitCount=29
+CompilerSettings=0000000100000000101000000
+UnitCount=31
 
 [VersionInfo]
 Major=1
@@ -332,6 +332,26 @@ BuildCmd=
 
 [Unit29]
 FileName=SpriteText.cpp
+CompileCpp=1
+Folder=mFS
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit30]
+FileName=RogItem.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit31]
+FileName=RogItem.cpp
 CompileCpp=1
 Folder=mFS
 Compile=1

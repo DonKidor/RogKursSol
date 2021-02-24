@@ -1,5 +1,6 @@
 #include "rog.h"
 #include "SpriteText.h"
+#include <iostream>
 
 SpriteText::SpriteText(int length) {
 	PaintBox();
@@ -28,6 +29,7 @@ void SpriteText::setValue(int v) {
 
 
 SpriteText::~SpriteText() {
+	std::cout << "SpriteText: ";
 	for(int i=0;i<numCount;++i) delete nums[i];
 }
 

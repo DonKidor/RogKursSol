@@ -2,14 +2,23 @@
 
 #include "rog.h"
 
-class RogInventory : public RogSprite {
+class PaintGroup;
+
+class RogInventory : public RogSprite{
 	public:
 		RogInventory();
 		~RogInventory();
 		void paint(sf::RenderWindow &w) override;
 		int hits,golds,attack,defense;
+		void setScene(Scene *s) override;
+		void setPos(coord npos) override;
 	private:
-		void doRightPos(SpriteText *t,coord off,sf::RenderWindow &w);
+		void updated(allContr cTab) override;
+		RogItem *invItems[2][3];
+		
+		PaintGroup *items;
+		
+		void doRightPos(PaintObject *t,coord off);
 		coord hpOffset;
 		SpriteText *hp;
 		coord goldOffset;
@@ -18,4 +27,5 @@ class RogInventory : public RogSprite {
 		SpriteText *att;
 		coord defOffset;
 		SpriteText *def;
+		coord itemsOffset;
 };

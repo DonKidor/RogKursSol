@@ -13,6 +13,7 @@
 #include "RogTextBox.h"
 #include "RogSprite.h"
 #include "SpriteText.h"
+#include "RogItem.h"
 #include "RogInventory.h"
 #include <algorithm>
 #include <string>

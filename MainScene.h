@@ -8,6 +8,7 @@ class MainScene : public Scene {
 		void onMovedObj(PaintObject *p) override;
 		void onClickedLObj(PaintObject *p) override;
 	private:
+		RogInventory *b;
 		PaintObject *tt;
 		void paint();
 		void update();
